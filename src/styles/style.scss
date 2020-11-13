@@ -1,3 +1,53 @@
 @import "reset";
 @import "variables";
 @import "mixin";
+
+.cardWrap{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    place-items: center;
+    box-sizing: border-box;
+    div:nth-child(2){
+        display: flex;
+        place-self: stretch;
+        .cartIcon{
+            font-size: 2rem;
+            padding: 1rem;
+            margin-left: auto;
+            cursor: pointer;
+        }
+    }
+}
+
+.infoWrap{
+    display: grid;
+    align-content: center;
+    grid-gap: .5rem;
+    span:first-child{
+        font-weight: bold;
+    }
+}
+
+.listWrap{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+    padding: 1rem;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+ul{
+    display: flex;
+    li{
+        padding: 1rem;
+        font-size: 1.5rem;
+        &:hover{
+            background: red
+        }
+    }
+}
