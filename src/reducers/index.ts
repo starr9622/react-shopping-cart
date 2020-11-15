@@ -31,12 +31,16 @@ export const reducer = (
                 ...state,
                 pageTotal: action.payload
             }
-        case getType(Actions.changePage):{
+        case getType(Actions.changePage):
             return{
                 ...state,
                 currentPage: action.payload
             }
-        }
+        case getType(Actions.updateCartItem):
+            return{
+                ...state,
+                cart: action.payload 
+            }
         default: 
             return Object.assign({}, state)
     }

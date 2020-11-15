@@ -4,7 +4,7 @@ import CardImage from "./CardImage";
 import CardInfo from "./CardInfo";
 import CartButton from "./CartButton";
 
-export default function ListCard(props: PropsListCard){
+export default function ListCard(props:PropsListCard){
     return (
         <div className="cardWrap">
             <div>
@@ -12,7 +12,7 @@ export default function ListCard(props: PropsListCard){
             </div>
             <div>
                 <CardInfo title={props.title} price={props.price}/>
-                <CartButton flag={props.flag}/>
+                <CartButton id={props.id}/>
             </div>
         </div>
     );

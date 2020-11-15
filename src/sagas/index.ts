@@ -21,7 +21,7 @@ function* fetchProductList(){
 }
 
 function* currentListWorkflow(){
-    while (yield take(getType(Actions.changePage))) {
+    while(yield take(getType(Actions.changePage))) {
         const { pageCount, currentPage, productList }: IStoreState = yield select();
         let current:ProductType[] = [];
         for(let i = 0 ; i < pageCount ; i++){
@@ -31,8 +31,28 @@ function* currentListWorkflow(){
     }
 }
 
+function* cartActionWorkflow(){
+    let data:{payload:string};
+    while(data = yield take(getType(Actions.changeCartItem))){
+        const { cart }: IStoreState = yield select();
+        let newCart = [];
+        if(cart.some(item=>item === data.payload)){
+            newCart = cart.filter(item=>item !== data.payload);
+            yield put(Actions.updateCartItem(newCart));
+        }else{
+            if(cart.length < 3){
+                newCart = cart.concat([data.payload]);
+                yield put(Actions.updateCartItem(newCart));
+            }else{
+                alert("장바구니에는 최대 3개의 상품을 담을 수 있습니다.")
+            }
+        }
+    }
+}
+
 export default function* () {
     yield fork(fetchProductList);
     yield fork(currentListWorkflow);
+    yield fork(cartActionWorkflow);
 }
   

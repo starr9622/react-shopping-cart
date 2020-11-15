@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link, NavLink, Redirect } from "react-router-dom";
 import * as Page from "../pages";
 
 const Router: React.FC = () => {
@@ -7,7 +7,7 @@ const Router: React.FC = () => {
     <BrowserRouter>
       <ul>
         <li>
-        <NavLink exact to="/list">
+        <NavLink exact to="/products">
           List
         </NavLink>
         </li> 
@@ -16,8 +16,10 @@ const Router: React.FC = () => {
         </li>
       </ul>
       <Switch>
-        <Route exact from="/" to="/list" />
-        <Route exact path="/list" component={Page.ProductList} />
+        <Route exact path="/">
+          <Redirect to="/products" />
+        </Route>
+        <Route exact path="/products" component={Page.ProductList} />
         <Route exact path="/cart" component={Page.Cart} />
       </Switch>
     </BrowserRouter>

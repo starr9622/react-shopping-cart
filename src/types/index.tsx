@@ -3,7 +3,7 @@ export interface PropsImage {
     alt : string,
 }
 export interface PropsCartButton {
-    flag : boolean
+    id : string
 }
 export interface PropsCardInfo {
     title : string,
@@ -24,14 +24,11 @@ export interface ProductType{
     score: number
     availableCoupon?: boolean
 }
-export interface PropsCart{
-    id: string
-}
 export interface IStoreState{
     productList: ProductType[],
     currentPage: number,
     currentList: ProductType[],
-    cart: PropsCart[],
+    cart: string[],
     pageTotal: number,
     pageCount: number
 }

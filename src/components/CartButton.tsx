@@ -1,10 +1,11 @@
 import * as React from "react";
-import { PropsCartButton } from "../types";
+import { PropsCartButton, IStoreState } from "../types";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCartItem } from "../actions";
 
 export default function CartButton(props:PropsCartButton){
-    const [Icon, setIcon] = React.useState(props.flag ? '🛍️' : '🛒'); 
-    return <span className="cartIcon" onClick={()=> setIcon(
-            // Todo :: redux에 상태 변경 전달
-            Icon === '🛍️' ? '🛒' : '🛍️' 
-        )}>{Icon}</span>;
+    const cart = useSelector((state:IStoreState)=> state.cart)
+    const dispatch = useDispatch();
+    const icon = cart.some((item)=> item === props.id) ? '🛍️' : '🛒'; 
+    return <span className="cartIcon" onClick={()=>dispatch(changeCartItem(props.id))}>{icon}</span>;
 }
