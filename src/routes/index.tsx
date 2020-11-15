@@ -14,17 +14,11 @@ const Router: React.FC = () => {
         <li>
           <Link to="/cart">cart</Link>
         </li>
-        <li>
-          <Link to="/noMatch">nomatch</Link>
-        </li>
       </ul>
       <Switch>
         <Route exact from="/" to="/list" />
         <Route exact path="/list" component={Page.ProductList} />
         <Route exact path="/cart" component={Page.Cart} />
-        <Route path="*">
-          <Page.PageNotFound />
-        </Route>
       </Switch>
     </BrowserRouter>
   );
