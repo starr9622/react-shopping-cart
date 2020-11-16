@@ -1,20 +1,45 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { IStoreState } from '../types';
+import { IStoreState, Coupon, ProductType } from '../types';
 import CartInfoWrap from '../components/CartInfoWrap';
 import CartHandler from '../components/CartHandler';
 import CouponSelect from '../components/CouponSelect';
+import PriceWrap from '../components/PriceWrap';
+
+function disCount(paymentList: ProductType[], coupon: Coupon) {
+  let availablePrice = paymentList
+    .filter(
+      (payment) =>
+        !payment.hasOwnProperty('availableCoupon') || payment.availableCoupon
+    )
+    .reduce((acc, curr) => acc + curr.price, 0);
+  if (availablePrice > 0) {
+    return Math.round(
+      coupon.type === 'amount'
+        ? coupon.discountAmount
+        : availablePrice / coupon.discountRate
+    );
+  }
+  return 0;
+}
 
 export default function CartList() {
-  const { cart, productList, cartCheckList, couponList } = useSelector(
-    (state: IStoreState) => state
-  );
+  const {
+    cart,
+    productList,
+    cartCheckList,
+    couponList,
+    selectCoupon,
+  } = useSelector((state: IStoreState) => state);
   const cartList = productList.filter((product) =>
     cart.some((item) => item === product.id)
   );
   const paymentList = cartList.filter((pay) =>
     cartCheckList.some((check) => check === pay.id)
   );
+  const total = paymentList.reduce((acc, curr) => acc + curr.price, 0);
+  const coupon = couponList.find((coupon) => coupon.title === selectCoupon);
+  const disCountPrice = disCount(paymentList, coupon);
 
   return (
     <>
@@ -25,7 +50,13 @@ export default function CartList() {
       <div className="cartListWrap">
         <CartInfoWrap list={cartList} checkList={cartCheckList} />
       </div>
-      <CouponSelect coupon={couponList} />
+      <CouponSelect select={selectCoupon} coupon={couponList} />
+      <div>
+        <p>결제금액</p>
+        <PriceWrap title="총 상품금액" price={total} />
+        <PriceWrap title="총 할인금액" price={-disCountPrice} />
+        <PriceWrap title="총 결제금액" price={total - disCountPrice} />
+      </div>
     </>
   );
 }
