@@ -38,4 +38,5 @@ export interface IStoreState {
   pageTotal: number;
   pageCount: number;
   couponList: Coupon[];
+  cartCheckList: string[];
 }

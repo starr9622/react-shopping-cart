@@ -8,6 +8,7 @@ export const initializeState: IStoreState = {
     cart: [],
     couponList: [],
     currentList: [],
+    cartCheckList:[],
     currentPage: 1,
     pageTotal: 1,
     pageCount: 5,
@@ -47,6 +48,11 @@ export const reducer = (
             return{
                 ...state,
                 couponList: action.payload
+            }
+        case getType(Actions.updateItemCheck):
+            return{
+                ...state,
+                cartCheckList: action.payload
             }
         default: 
             return Object.assign({}, state)

@@ -1,71 +1,50 @@
 import * as React from 'react';
-import CardImage from '../components/CardImage';
-import CardInfo from '../components/CardInfo';
+import CheckItem from '../components/CheckItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { IStoreState, ProductType } from '../types';
-import { deleteCartItem } from '../actions';
+import { deleteCartItem, cartAllCheck } from '../actions';
+
+function CartInfoWrap(props: { list: ProductType[] }) {
+  if (props.list.length) {
+    return (
+      <>
+        {props.list.map((item) => (
+          <CheckItem key={item.id} item={item} />
+        ))}
+      </>
+    );
+  } else {
+    return <p>장바구니가 비었습니다.</p>;
+  }
+}
 
 export default function CartList() {
   const dispatch = useDispatch();
   const cart = useSelector((state: IStoreState) => state.cart);
   const productList = useSelector((state: IStoreState) => state.productList);
+  const cartCheckList = useSelector(
+    (state: IStoreState) => state.cartCheckList
+  );
   const cartList = productList.filter((product) =>
     cart.some((item) => item === product.id)
   );
-  const [checked, changeChecked] = React.useState(cart);
-
-  function CartList(props: { list: ProductType[] }) {
-    if (props.list.length) {
-      return (
-        <>
-          {props.list.map((item) => (
-            <div className="cartListRow" key={item.id}>
-              <input
-                type="checkbox"
-                name={item.id}
-                checked={checked.some((i) => i === item.id)}
-                onChange={() =>
-                  checked.some((i) => i === item.id)
-                    ? changeChecked(checked.filter((i) => i !== item.id))
-                    : changeChecked(checked.concat([item.id]))
-                }
-              />
-              <CardImage src={item.coverImage} alt={item.title} />
-              <CardInfo title={item.title} price={item.price} />
-            </div>
-          ))}
-        </>
-      );
-    } else {
-      return <p>장바구니가 비었습니다.</p>;
-    }
-  }
 
   return (
     <>
       <div className="cartListRow">
         <input
           type="checkbox"
+          checked={cart.length === cartCheckList.length}
           name="allCheck"
-          checked={checked.length === cart.length}
-          onChange={() =>
-            checked.length === cart.length
-              ? changeChecked([])
-              : changeChecked(cart)
-          }
-        />
-        <label>{checked.length}개 선택</label>
-        <button
-          onClick={() => {
-            dispatch(deleteCartItem(checked));
-            changeChecked([]);
+          onChange={() => {
+            dispatch(cartAllCheck());
           }}
-        >
-          상품 삭제
-        </button>
+        />
+        <label>{cartCheckList.length}개 선택</label>
+        <button onClick={() => dispatch(deleteCartItem())}>상품 삭제</button>
       </div>
       <div className="cartListWrap">
-        <CartList list={cartList} />
+        <CartInfoWrap list={cartList} />
       </div>
     </>
   );
