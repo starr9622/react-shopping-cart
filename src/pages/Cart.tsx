@@ -1,7 +1,8 @@
 import * as React from "react";
+import { CartList } from "../containers";
 
 export default function Cart(){
     return(
-        <h1>test</h1>
+        <CartList />
     )
 }

@@ -20,6 +20,11 @@ function* fetchProductList(){
     yield put(Actions.fetchCurrentList(current));
 }
 
+function* fetchCouponList(){
+    const { data } = yield call(Api.fetchCouponList);
+    yield put(Actions.fetchCouponList(data));
+}
+
 function* currentListWorkflow(){
     while(yield take(getType(Actions.changePage))) {
         const { pageCount, currentPage, productList }: IStoreState = yield select();
@@ -50,9 +55,19 @@ function* cartActionWorkflow(){
     }
 }
 
+function* cartDeleteActionWorkflow(){
+    let data:{payload:string[]};
+    while(data = yield take(getType(Actions.deleteCartItem))){
+        const { cart }: IStoreState = yield select();
+        yield put(Actions.updateCartItem(cart.filter(item=>!data.payload.some(d => d === item))));
+    }
+}
+
 export default function* () {
     yield fork(fetchProductList);
     yield fork(currentListWorkflow);
     yield fork(cartActionWorkflow);
+    yield fork(cartDeleteActionWorkflow);
+    yield fork(fetchCouponList);
 }
   

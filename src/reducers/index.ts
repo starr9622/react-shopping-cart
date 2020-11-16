@@ -1,12 +1,14 @@
+import { Coupon } from './../types/index';
 import { ActionType, getType } from "typesafe-actions";
 import * as Actions from "../actions";
 import { IStoreState } from "../types";
 
 export const initializeState: IStoreState = {
     productList: [],
-    currentPage: 1,
-    currentList: [],
     cart: [],
+    couponList: [],
+    currentList: [],
+    currentPage: 1,
     pageTotal: 1,
     pageCount: 5,
 }
@@ -40,6 +42,11 @@ export const reducer = (
             return{
                 ...state,
                 cart: action.payload 
+            }
+        case getType(Actions.fetchCouponList):
+            return{
+                ...state,
+                couponList: action.payload
             }
         default: 
             return Object.assign({}, state)

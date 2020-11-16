@@ -7,3 +7,5 @@ export const getPageTotal = createAction("@update/page/total", (data)=>data)();
 export const changePage = createAction("@update/page/current", (data)=>data)();
 export const changeCartItem = createAction("@change/cart/item", (data)=>data)();
 export const updateCartItem = createAction("@update/cart/item", (data)=>data)();
+export const deleteCartItem = createAction("@delete/cart/item", (data)=>data)();
+export const fetchCouponList = createAction("@request/couponList", (data)=>data)();

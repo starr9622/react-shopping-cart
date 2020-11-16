@@ -1,18 +1,23 @@
-import * as React from "react";
-import { BrowserRouter, Route, Switch, Link, NavLink, Redirect } from "react-router-dom";
-import * as Page from "../pages";
+import * as React from 'react';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Link,
+  NavLink,
+  Redirect,
+} from 'react-router-dom';
+import * as Page from '../pages';
 
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <ul>
         <li>
-        <NavLink exact to="/products">
-          List
-        </NavLink>
-        </li> 
+          <Link to="/products">전체 상품</Link>
+        </li>
         <li>
-          <Link to="/cart">cart</Link>
+          <Link to="/cart">장바구니</Link>
         </li>
       </ul>
       <Switch>

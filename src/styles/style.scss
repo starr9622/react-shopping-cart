@@ -58,3 +58,27 @@ ul{
     color:red;
     border-bottom: 1px solid;
 }
+
+.cartListWrap{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    height: 30vh;
+    padding: 1rem;
+    grid-gap: 1rem;
+    box-sizing: border-box;
+
+    p{
+        text-align: center;
+    }
+}
+.cartListRow{
+    display: grid;
+    grid-template-columns: 1rem 1fr 1fr;
+    height: inherit;
+    box-sizing: border-box;
+    align-items: center;
+    grid-gap: 1rem;
+    button{
+        justify-self: flex-end;
+    }
+}

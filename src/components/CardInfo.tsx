@@ -1,12 +1,14 @@
-import * as React from "react";
-import { PropsCardInfo } from "../types";
+import * as React from 'react';
+import { PropsCardInfo } from '../types';
+import NumberWrap from './NumberWrap';
 
-export default function CardInfo(props : PropsCardInfo){
-    const price = String(props.price).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-    return (
-        <div className="infoWrap">
-            <span>{props.title}</span>
-            <span>{price}원</span>
-        </div>
-    )
+export default function CardInfo(props: PropsCardInfo) {
+  return (
+    <div className="infoWrap">
+      <span>{props.title}</span>
+      <span>
+        <NumberWrap num={props.price} />원
+      </span>
+    </div>
+  );
 }
