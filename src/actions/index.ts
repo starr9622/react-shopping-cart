@@ -39,3 +39,4 @@ export const updateItemCheck = createAction(
   '@update/cart/checked',
   (data) => data
 )();
+export const selectCoupon = createAction('@update/coupon', (data) => data)();
