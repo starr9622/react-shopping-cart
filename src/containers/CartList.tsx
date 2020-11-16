@@ -1,25 +1,10 @@
 import * as React from 'react';
-import CheckItem from '../components/CheckItem';
-import { useSelector, useDispatch } from 'react-redux';
-import { IStoreState, ProductType } from '../types';
-import { deleteCartItem, cartAllCheck } from '../actions';
-
-function CartInfoWrap(props: { list: ProductType[] }) {
-  if (props.list.length) {
-    return (
-      <>
-        {props.list.map((item) => (
-          <CheckItem key={item.id} item={item} />
-        ))}
-      </>
-    );
-  } else {
-    return <p>장바구니가 비었습니다.</p>;
-  }
-}
+import { useSelector } from 'react-redux';
+import { IStoreState } from '../types';
+import CartInfoWrap from '../components/CartInfoWrap';
+import CartHandler from '../components/CartHandler';
 
 export default function CartList() {
-  const dispatch = useDispatch();
   const cart = useSelector((state: IStoreState) => state.cart);
   const productList = useSelector((state: IStoreState) => state.productList);
   const cartCheckList = useSelector(
@@ -31,20 +16,12 @@ export default function CartList() {
 
   return (
     <>
-      <div className="cartListRow">
-        <input
-          type="checkbox"
-          checked={cart.length === cartCheckList.length}
-          name="allCheck"
-          onChange={() => {
-            dispatch(cartAllCheck());
-          }}
-        />
-        <label>{cartCheckList.length}개 선택</label>
-        <button onClick={() => dispatch(deleteCartItem())}>상품 삭제</button>
-      </div>
+      <CartHandler
+        allCheck={cart.length === cartCheckList.length}
+        select={cartCheckList.length}
+      />
       <div className="cartListWrap">
-        <CartInfoWrap list={cartList} />
+        <CartInfoWrap list={cartList} checkList={cartCheckList} />
       </div>
     </>
   );

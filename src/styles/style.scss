@@ -62,7 +62,7 @@ ul{
 .cartListWrap{
     display: grid;
     grid-template-rows: repeat(3, 1fr);
-    height: 30vh;
+    min-height: 50vh;
     padding: 1rem;
     grid-gap: 1rem;
     box-sizing: border-box;
