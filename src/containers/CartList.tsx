@@ -4,7 +4,7 @@ import { IStoreState, Coupon, ProductType } from '../types';
 import CartInfoWrap from '../components/CartInfoWrap';
 import CartHandler from '../components/CartHandler';
 import CouponSelect from '../components/CouponSelect';
-import PriceWrap from '../components/PriceWrap';
+import DisCountWrap from '../components/DisCountWrap';
 
 function disCount(paymentList: ProductType[], coupon: Coupon) {
   let availablePrice = paymentList
@@ -51,12 +51,7 @@ export default function CartList() {
         <CartInfoWrap list={cartList} checkList={cartCheckList} />
       </div>
       <CouponSelect select={selectCoupon} coupon={couponList} />
-      <div>
-        <p>결제금액</p>
-        <PriceWrap title="총 상품금액" price={total} />
-        <PriceWrap title="총 할인금액" price={-disCountPrice} />
-        <PriceWrap title="총 결제금액" price={total - disCountPrice} />
-      </div>
+      <DisCountWrap total={total} disCountPrice={disCountPrice} />
     </>
   );
 }

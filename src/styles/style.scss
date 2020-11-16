@@ -1,90 +1,151 @@
-@import "reset";
-@import "variables";
-@import "mixin";
+@import 'reset';
+@import 'variables';
+@import 'mixin';
 
-.cardWrap{
-    display: grid;
-    grid-template-rows: 1fr auto;
-    place-items: center;
-    box-sizing: border-box;
-    div:nth-child(2){
-        display: flex;
-        place-self: stretch;
-        .cartIcon{
-            font-size: 2rem;
-            padding: 1rem;
-            margin-left: auto;
-            cursor: pointer;
-        }
+.cardWrap {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  box-sizing: border-box;
+  div:nth-child(2) {
+    display: flex;
+    place-self: stretch;
+    .cartIcon {
+      font-size: 2rem;
+      padding: 1rem;
+      margin-left: auto;
+      cursor: pointer;
     }
+  }
+}
+.infoWrap {
+  display: grid;
+  align-content: center;
+  grid-gap: 0.5rem;
+  span:first-child {
+    font-weight: bold;
+  }
 }
 
-.infoWrap{
-    display: grid;
-    align-content: center;
-    grid-gap: .5rem;
-    span:first-child{
-        font-weight: bold;
-    }
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.listWrap{
+ul {
+  display: flex;
+  justify-content: center;
+  li {
+    padding: 1rem;
+    font-size: 1.5rem;
+    &:hover {
+      border-bottom: 2px solid $pointColor;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $fontColor;
+}
+
+.selectPage {
+  font-weight: bold;
+  color: $pointColor;
+  border-bottom: 2px solid $pointColor;
+}
+
+.cartListWrap {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  min-height: 50vh;
+  padding: 1rem;
+  grid-gap: 1rem;
+  box-sizing: border-box;
+
+  p {
+    text-align: center;
+  }
+}
+.cartListRow {
+  display: grid;
+  grid-template-columns: 1rem 1fr 1fr;
+  height: inherit;
+  box-sizing: border-box;
+  align-items: center;
+  grid-gap: 1rem;
+  button {
+    justify-self: flex-end;
+  }
+}
+.cartHandler {
+  padding: 1rem;
+}
+.couponWrap {
+  label {
+    font-size: 1.5rem;
+  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem;
+  border: 1px solid $lineColor;
+}
+.priceWrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  margin-bottom: 1rem;
+}
+.disCountWrap {
+  padding: 1rem;
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+.paymentBtn {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-weight: 500;
+  color: #ffff;
+  background: $pointColor;
+}
+
+.logoWrap {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@include desktop {
+  .listWrap {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
-    padding: 1rem;   
-}
-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-ul{
-    display: flex;
-    justify-content: center;
-    li{
-        padding: 1rem;
-        font-size: 1.5rem;
-        &:hover{
-            background: red
-        }
-    }
-}
-
-.selectPage{
-    font-weight: bold;
-    color:red;
-    border-bottom: 1px solid;
-}
-
-.cartListWrap{
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    min-height: 50vh;
     padding: 1rem;
-    grid-gap: 1rem;
-    box-sizing: border-box;
+  }
+  .appWrap {
+    width: 80%;
+    margin: auto;
+  }
+}
 
-    p{
-        text-align: center;
-    }
-}
-.cartListRow{
-    display: grid;
-    grid-template-columns: 1rem 1fr 1fr;
-    height: inherit;
-    box-sizing: border-box;
-    align-items: center;
-    grid-gap: 1rem;
-    button{
-        justify-self: flex-end;
-    }
-}
-.couponWrap{
+@include tablet {
+  .listWrap {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
     padding: 1rem;
-    border: 1px solid #dfdfdf;
+  }
+}
+
+@include mobile {
+  .listWrap {
+    padding: 1rem;
+  }
 }

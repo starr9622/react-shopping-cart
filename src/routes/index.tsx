@@ -12,6 +12,9 @@ import * as Page from '../pages';
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
+      <div className="logoWrap">
+        <Link to="/products">🎁</Link>
+      </div>
       <ul>
         <li>
           <Link to="/products">전체 상품</Link>

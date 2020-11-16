@@ -8,7 +8,7 @@ export default function CartHandler(props: {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="cartListRow">
+      <div className="cartListRow cartHandler">
         <input
           type="checkbox"
           checked={props.allCheck}
