@@ -104,6 +104,19 @@ a {
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   margin-bottom: 1rem;
+  &.discount {
+    span:nth-child(2) {
+      color: red;
+      font-weight: bold;
+    }
+  }
+  &.payment {
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-top: 1px solid $lineColor;
+    padding: 1rem;
+    margin: 0;
+  }
 }
 .disCountWrap {
   padding: 1rem;
@@ -147,6 +160,7 @@ input[type='checkbox'] {
     grid-gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid $lineColor;
+    border-top: 1px solid $lineColor;
   }
   .appWrap {
     width: 80%;
@@ -161,6 +175,7 @@ input[type='checkbox'] {
     grid-gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid $lineColor;
+    border-top: 1px solid $lineColor;
   }
 }
 
@@ -171,5 +186,6 @@ input[type='checkbox'] {
     grid-auto-rows: 1fr;
     padding: 1rem;
     border-bottom: 1px solid $lineColor;
+    border-top: 1px solid $lineColor;
   }
 }
