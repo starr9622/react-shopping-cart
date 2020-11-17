@@ -61,6 +61,7 @@ function* cartActionWorkflow() {
       if (cart.length < 3) {
         newCart = cart.concat([data.payload]);
         yield put(Actions.updateCartItem(newCart));
+        yield put(Actions.updateItemCheck(newCart));
       } else {
         alert('장바구니에는 최대 3개의 상품을 담을 수 있습니다.');
       }
