@@ -42,6 +42,14 @@ button {
   padding: 1rem;
   span:first-child {
     font-weight: bold;
+    &.coupon::after {
+      content: '쿠폰사용가능';
+      color: green;
+      font-size: 0.7rem;
+      margin-left: 0.5rem;
+      border: 1px solid green;
+      white-space: nowrap;
+    }
   }
 }
 

@@ -21,6 +21,7 @@ export default function ItemList() {
                 price={data.price}
                 id={data.id}
                 cart={cart}
+                coupon={data.hasOwnProperty('availableCoupon')}
               />
             );
         })}

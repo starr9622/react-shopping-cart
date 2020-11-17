@@ -18,7 +18,11 @@ export default function CheckItem(props: PropsCheckItem) {
           onChange={() => dispatch(cartItemCheck(props.item.id))}
         />
         <CardImage src={props.item.coverImage} alt={props.item.title} />
-        <CardInfo title={props.item.title} price={props.item.price} />
+        <CardInfo
+          title={props.item.title}
+          price={props.item.price}
+          coupon={props.item.hasOwnProperty('availableCoupon')}
+        />
       </div>
     </>
   );

@@ -9,6 +9,7 @@ export interface PropsCartButton {
 export interface PropsCardInfo {
   title: string;
   price: number;
+  coupon?: boolean;
 }
 export interface PropsListCard extends PropsCardInfo, PropsCartButton {
   src: string;

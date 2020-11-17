@@ -11,7 +11,11 @@ export default function ListCard(props: PropsListCard) {
         <CardImage src={props.src} alt={props.title} />
       </div>
       <div>
-        <CardInfo title={props.title} price={props.price} />
+        <CardInfo
+          title={props.title}
+          price={props.price}
+          coupon={props.coupon}
+        />
         <CartButton cart={props.cart} id={props.id} />
       </div>
     </div>
