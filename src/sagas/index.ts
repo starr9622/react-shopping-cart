@@ -1,3 +1,4 @@
+import { check } from 'prettier';
 import {
   fork,
   all,
@@ -47,11 +48,16 @@ function* currentListWorkflow() {
 function* cartActionWorkflow() {
   let data: { payload: string };
   while ((data = yield take(getType(Actions.changeCartItem)))) {
-    const { cart }: IStoreState = yield select();
+    const { cart, cartCheckList }: IStoreState = yield select();
     let newCart = [];
     if (cart.some((item) => item === data.payload)) {
       newCart = cart.filter((item) => item !== data.payload);
       yield put(Actions.updateCartItem(newCart));
+      yield put(
+        Actions.updateItemCheck(
+          cartCheckList.filter((check) => check !== data.payload)
+        )
+      );
     } else {
       if (cart.length < 3) {
         newCart = cart.concat([data.payload]);
