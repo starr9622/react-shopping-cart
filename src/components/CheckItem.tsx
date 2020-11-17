@@ -1,14 +1,11 @@
 import * as React from 'react';
 import CardImage from './CardImage';
 import CardInfo from './CardInfo';
-import { useDispatch, useSelector } from 'react-redux';
-import { ProductType } from '../types';
+import { useDispatch } from 'react-redux';
+import { PropsCheckItem } from '../types';
 import { cartItemCheck } from '../actions';
 
-export default function CheckItem(props: {
-  item: ProductType;
-  checkList: string[];
-}) {
+export default function CheckItem(props: PropsCheckItem) {
   const dispatch = useDispatch();
 
   return (

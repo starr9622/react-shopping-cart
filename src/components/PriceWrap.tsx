@@ -1,7 +1,8 @@
 import * as React from 'react';
 import NumberWrap from './NumberWrap';
+import { PropsPriceWrap } from '../types';
 
-export default function PriceWrap(props: { title: string; price: number }) {
+export default function PriceWrap(props: PropsPriceWrap) {
   return (
     <>
       <div className="priceWrap">

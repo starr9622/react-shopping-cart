@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { Coupon } from '../types';
+import { PropsCouponSelect } from '../types';
 import { useDispatch } from 'react-redux';
 import { selectCoupon } from '../actions';
 
-export default function CouponSelect(props: {
-  select: string;
-  coupon: Coupon[];
-}) {
+export default function CouponSelect(props: PropsCouponSelect) {
   const dispatch = useDispatch();
   return (
     <>

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import PriceWrap from './PriceWrap';
 import NumberWrap from './NumberWrap';
+import { PropsDisCountWrap } from '../types';
 
-export default function DisCountWrap(props: {
-  total: number;
-  disCountPrice: number;
-}) {
+export default function DisCountWrap(props: PropsDisCountWrap) {
   return (
     <>
       <div className="disCountWrap">

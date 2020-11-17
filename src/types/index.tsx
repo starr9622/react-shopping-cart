@@ -4,6 +4,7 @@ export interface PropsImage {
 }
 export interface PropsCartButton {
   id: string;
+  cart: string[];
 }
 export interface PropsCardInfo {
   title: string;
@@ -11,10 +12,46 @@ export interface PropsCardInfo {
 }
 export interface PropsListCard extends PropsCardInfo, PropsCartButton {
   src: string;
+  cart: string[];
 }
 
 export interface PropsPagination {
   page: number;
+  currentPage: number;
+}
+
+export interface PropsCheckItem {
+  item: ProductType;
+  checkList: string[];
+}
+
+export interface PropsCartHandler {
+  allCheck: boolean;
+  select: number;
+}
+
+export interface PropsCartInfoWrap {
+  list: ProductType[];
+  checkList: string[];
+}
+
+export interface PropsCouponSelect {
+  select: string;
+  coupon: Coupon[];
+}
+
+export interface PropsDisCountWrap {
+  total: number;
+  disCountPrice: number;
+}
+
+export interface PropsNumberWrap {
+  num: number;
+}
+
+export interface PropsPriceWrap {
+  title: string;
+  price: number;
 }
 export interface ProductType {
   id: string;

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteCartItem, cartAllCheck } from '../actions';
-export default function CartHandler(props: {
-  allCheck: boolean;
-  select: number;
-}) {
+import { PropsCartHandler } from '../types';
+
+export default function CartHandler(props: PropsCartHandler) {
   const dispatch = useDispatch();
   return (
     <>

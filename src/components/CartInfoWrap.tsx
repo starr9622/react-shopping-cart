@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { ProductType } from '../types';
+import { PropsCartInfoWrap } from '../types';
 import CheckItem from './CheckItem';
 
-export default function CartInfoWrap(props: {
-  list: ProductType[];
-  checkList: string[];
-}) {
+export default function CartInfoWrap(props: PropsCartInfoWrap) {
   if (props.list.length) {
     return (
       <>

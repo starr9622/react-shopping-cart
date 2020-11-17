@@ -5,8 +5,9 @@ import { ProductType, IStoreState } from '../types';
 import { useSelector } from 'react-redux';
 
 export default function ItemList() {
-  const currentList = useSelector((state: IStoreState) => state.currentList);
-  const pageTotal = useSelector((state: IStoreState) => state.pageTotal);
+  const { currentList, pageTotal, cart, currentPage } = useSelector(
+    (state: IStoreState) => state
+  );
   return (
     <>
       <div className="listWrap">
@@ -19,11 +20,12 @@ export default function ItemList() {
                 src={data.coverImage}
                 price={data.price}
                 id={data.id}
+                cart={cart}
               />
             );
         })}
       </div>
-      <Pagination page={pageTotal} />
+      <Pagination page={pageTotal} currentPage={currentPage} />
     </>
   );
 }
