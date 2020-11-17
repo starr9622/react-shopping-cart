@@ -2,9 +2,15 @@
 @import 'variables';
 @import 'mixin';
 
+input,
+button {
+  cursor: pointer;
+}
+
 .cardWrap {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 20%;
+  grid-gap: 1rem;
   place-items: center;
   box-sizing: border-box;
   div:nth-child(2) {
@@ -34,20 +40,22 @@ img {
 }
 
 ul {
+  padding: 1rem;
   display: flex;
   justify-content: center;
   li {
+    cursor: pointer;
     padding: 1rem;
     font-size: 1.5rem;
-    &:hover {
-      border-bottom: 2px solid $pointColor;
-    }
   }
 }
 
 a {
   text-decoration: none;
   color: $fontColor;
+  &:hover {
+    border-bottom: 2px solid $pointColor;
+  }
 }
 
 .selectPage {
@@ -112,6 +120,7 @@ a {
   font-weight: 500;
   color: #ffff;
   background: $pointColor;
+  cursor: pointer;
 }
 
 .logoWrap {
@@ -121,6 +130,15 @@ a {
   padding: 1rem;
   box-sizing: border-box;
 }
+
+input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  &:checked:before {
+    background-color: green;
+  }
+}
+
 @include desktop {
   .listWrap {
     display: grid;
@@ -128,6 +146,7 @@ a {
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
     padding: 1rem;
+    border-bottom: 1px solid $lineColor;
   }
   .appWrap {
     width: 80%;
@@ -141,11 +160,16 @@ a {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     padding: 1rem;
+    border-bottom: 1px solid $lineColor;
   }
 }
 
 @include mobile {
   .listWrap {
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-auto-rows: 1fr;
     padding: 1rem;
+    border-bottom: 1px solid $lineColor;
   }
 }
