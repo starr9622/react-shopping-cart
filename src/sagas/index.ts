@@ -94,7 +94,7 @@ function* cartCheckItemWorkflow() {
 function* cartAllCheckWorkflow() {
   while (yield take(getType(Actions.cartAllCheck))) {
     const { cart, cartCheckList }: IStoreState = yield select();
-    if (cart === cartCheckList) {
+    if (cart.length === cartCheckList.length) {
       yield put(Actions.updateItemCheck([]));
     } else {
       yield put(Actions.updateItemCheck(cart));
