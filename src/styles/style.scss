@@ -9,18 +9,29 @@ button {
 
 .cardWrap {
   display: grid;
-  grid-template-rows: auto 20%;
-  grid-gap: 1rem;
-  place-items: center;
+  place-items: stretch;
   box-sizing: border-box;
+  grid-template-rows: calc(100% - 5rem) 5rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
   div:nth-child(2) {
     display: flex;
     place-self: stretch;
+    background: #fff;
+    z-index: 1;
     .cartIcon {
       font-size: 2rem;
       padding: 1rem;
-      margin-left: auto;
+      margin: auto;
+      margin-right: 0;
       cursor: pointer;
+    }
+  }
+  img {
+    transition: transform 0.2s ease-in-out 0s;
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }
@@ -28,6 +39,7 @@ button {
   display: grid;
   align-content: center;
   grid-gap: 0.5rem;
+  padding: 1rem;
   span:first-child {
     font-weight: bold;
   }
@@ -155,12 +167,27 @@ input[type='checkbox'] {
 @include desktop {
   .listWrap {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 35vh);
     grid-gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid $lineColor;
     border-top: 1px solid $lineColor;
+    .cardWrap:first-child {
+      grid-area: 1 / 1 / 2 / 3;
+    }
+    .cardWrap:nth-child(2) {
+      grid-area: 1 / 3 / 2 / 5;
+    }
+    .cardWrap:nth-child(3) {
+      grid-area: 1 / 5 / 2 / 7;
+    }
+    .cardWrap:nth-child(4) {
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .cardWrap:nth-child(5) {
+      grid-area: 2 / 4 / 3 / 7;
+    }
   }
   .appWrap {
     width: 80%;
@@ -171,7 +198,7 @@ input[type='checkbox'] {
 @include tablet {
   .listWrap {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     grid-gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid $lineColor;

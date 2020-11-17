@@ -13,7 +13,7 @@ const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <div className="logoWrap">
-        <Link to="/products">🎁</Link>
+        <Link to="/">🎁</Link>
       </div>
       <ul>
         <li>
