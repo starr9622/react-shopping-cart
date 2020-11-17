@@ -21,7 +21,10 @@ export default function ItemList() {
                 price={data.price}
                 id={data.id}
                 cart={cart}
-                coupon={data.hasOwnProperty('availableCoupon')}
+                coupon={
+                  data.hasOwnProperty('availableCoupon') &&
+                  !data.availableCoupon
+                }
               />
             );
         })}
