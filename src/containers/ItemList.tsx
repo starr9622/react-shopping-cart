@@ -22,8 +22,8 @@ export default function ItemList() {
                 id={data.id}
                 cart={cart}
                 coupon={
-                  data.hasOwnProperty('availableCoupon') &&
-                  !data.availableCoupon
+                  !data.hasOwnProperty('availableCoupon') ||
+                  data.availableCoupon
                 }
               />
             );

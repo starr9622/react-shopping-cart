@@ -21,7 +21,10 @@ export default function CheckItem(props: PropsCheckItem) {
         <CardInfo
           title={props.item.title}
           price={props.item.price}
-          coupon={props.item.hasOwnProperty('availableCoupon')}
+          coupon={
+            !props.item.hasOwnProperty('availableCoupon') ||
+            props.item.availableCoupon
+          }
         />
         <span onClick={() => dispatch(deleteCartItem(props.item.id))}>❌</span>
       </div>
