@@ -3,7 +3,7 @@ import CardImage from './CardImage';
 import CardInfo from './CardInfo';
 import { useDispatch } from 'react-redux';
 import { PropsCheckItem } from '../types';
-import { cartItemCheck } from '../actions';
+import { cartItemCheck, deleteCartItem } from '../actions';
 
 export default function CheckItem(props: PropsCheckItem) {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ export default function CheckItem(props: PropsCheckItem) {
           price={props.item.price}
           coupon={props.item.hasOwnProperty('availableCoupon')}
         />
+        <span onClick={() => dispatch(deleteCartItem(props.item.id))}>❌</span>
       </div>
     </>
   );

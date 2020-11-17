@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteCartItem, cartAllCheck } from '../actions';
+import { cartAllCheck } from '../actions';
 import { PropsCartHandler } from '../types';
 
 export default function CartHandler(props: PropsCartHandler) {
@@ -17,7 +17,6 @@ export default function CartHandler(props: PropsCartHandler) {
           }}
         />
         <label>{props.select}개 선택</label>
-        <button onClick={() => dispatch(deleteCartItem())}>상품 삭제</button>
       </div>
     </>
   );

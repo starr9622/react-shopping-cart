@@ -70,12 +70,11 @@ function* cartActionWorkflow() {
 }
 
 function* deleteCartItemWorkflow() {
-  while (yield take(getType(Actions.deleteCartItem))) {
-    const { cart, cartCheckList }: IStoreState = yield select();
+  let data: { payload: string };
+  while ((data = yield take(getType(Actions.deleteCartItem)))) {
+    const { cart }: IStoreState = yield select();
     yield put(
-      Actions.updateCartItem(
-        cart.filter((item) => !cartCheckList.some((d) => d === item))
-      )
+      Actions.updateCartItem(cart.filter((item) => data.payload !== item))
     );
     yield put(Actions.updateItemCheck([]));
   }

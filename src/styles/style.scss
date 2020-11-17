@@ -98,13 +98,17 @@ a {
 }
 .cartListRow {
   display: grid;
-  grid-template-columns: 1rem 1fr 1fr;
+  grid-template-columns: 1rem 1fr 1fr 3rem;
   height: inherit;
   box-sizing: border-box;
   align-items: center;
   grid-gap: 1rem;
   button {
     justify-self: flex-end;
+  }
+  span:last-child {
+    padding: 1rem;
+    cursor: pointer;
   }
 }
 .cartHandler {

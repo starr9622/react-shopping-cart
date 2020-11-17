@@ -25,7 +25,10 @@ export const updateCartItem = createAction(
   '@update/cart/item',
   (data) => data
 )();
-export const deleteCartItem = createAction('@delete/cart/item')();
+export const deleteCartItem = createAction(
+  '@delete/cart/item',
+  (data) => data
+)();
 export const cartAllCheck = createAction('@update/cart/allItem')();
 export const fetchCouponList = createAction(
   '@request/couponList',
