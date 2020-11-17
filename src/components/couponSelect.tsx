@@ -10,9 +10,10 @@ export default function CouponSelect(props: PropsCouponSelect) {
       <div className="couponWrap">
         <label>쿠폰선택</label>
         <select
-          defaultValue={props.select}
+          defaultValue=""
           onChange={(e) => dispatch(selectCoupon(e.target.value))}
         >
+          <option value="">쿠폰을 선택하세요.</option>
           {props.coupon.map((item, index) => (
             <option key={index} value={item.title}>
               {item.title}

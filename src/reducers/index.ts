@@ -1,4 +1,3 @@
-import { Coupon } from './../types/index';
 import { ActionType, getType } from 'typesafe-actions';
 import * as Actions from '../actions';
 import { IStoreState } from '../types';

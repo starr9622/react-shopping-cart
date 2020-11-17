@@ -7,18 +7,20 @@ import CouponSelect from '../components/CouponSelect';
 import DisCountWrap from '../components/DisCountWrap';
 
 function disCount(paymentList: ProductType[], coupon: Coupon) {
-  let availablePrice = paymentList
-    .filter(
-      (payment) =>
-        !payment.hasOwnProperty('availableCoupon') || payment.availableCoupon
-    )
-    .reduce((acc, curr) => acc + curr.price, 0);
-  if (availablePrice > 0) {
-    return Math.round(
-      coupon.type === 'amount'
-        ? coupon.discountAmount
-        : availablePrice / coupon.discountRate
-    );
+  if (coupon) {
+    let availablePrice = paymentList
+      .filter(
+        (payment) =>
+          !payment.hasOwnProperty('availableCoupon') || payment.availableCoupon
+      )
+      .reduce((acc, curr) => acc + curr.price, 0);
+    if (availablePrice > 0) {
+      return Math.round(
+        coupon.type === 'amount'
+          ? coupon.discountAmount
+          : availablePrice / coupon.discountRate
+      );
+    }
   }
   return 0;
 }

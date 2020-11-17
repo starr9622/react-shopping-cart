@@ -31,7 +31,6 @@ function* fetchProductList() {
 function* fetchCouponList() {
   const { data } = yield call(Api.fetchCouponList);
   yield put(Actions.fetchCouponList(data));
-  yield put(Actions.selectCoupon(data[0].title));
 }
 
 function* currentListWorkflow() {
